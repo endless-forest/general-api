@@ -4,12 +4,12 @@ const router = express.Router();
 
 const apiKey = ""
 
-/* GET users listing. */
+/* GET query math api. */
 router.get('/', async function(req, res, next) {
-  const query = "2 + 2"
+  const fallbackQuery = "2 + 2" 
+  const query = req.query.expression || fallbackQuery 
   const fullUrl = `https://api.wolframalpha.com/v1/simple?appid=${apiKey}&i=${query}`
   const results = await axios.get(fullUrl) 
-  console.info(results)
   res.send(results.data);
 });
 
