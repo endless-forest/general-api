@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios')
 const router = express.Router();
 
-const apiKey = ""
+const apiKey = process.env.WOLF_API_KEY
 
 /* GET query math api. */
 router.get('/', async function(req, res, next) {
