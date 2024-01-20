@@ -11,8 +11,9 @@ router.get('/', async function(req, res, next) {
   const fullUrl = `https://api.wolframalpha.com/v1/simple?appid=${apiKey}&i=${query}`
   let results;
   try {
-    const response = await axios.get(fullUrl) 
-    results = response.data
+    //const response = await axios.get(fullUrl)
+    const response = await fetch(fullUrl) 
+    results = response
   } catch (error) {
     results = error 
   }
