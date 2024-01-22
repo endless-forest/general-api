@@ -12,8 +12,8 @@ router.get('/', async function(req, res, next) {
   let results;
   try {
     //const response = await axios.get(fullUrl)
-    const response = await fetch(fullUrl) 
-    results = response
+    const response = await axios.get(fullUrl) 
+    results = response.data
   } catch (error) {
     results = error 
   }
