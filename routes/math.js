@@ -8,7 +8,7 @@ const apiKey = process.env.WOLF_MATH_API_KEY
 /* GET query math api. */
 router.get('/', async function(req, res, next) {
   const fallbackQuery = encodeURIComponent("2 + 2") 
-  const query = encodeURIComponent(`solve ${req.query.expression}`) || fallbackQuery 
+  const query = `solve ${req.query.expression}` || fallbackQuery 
   const fullUrl = `https://api.wolframalpha.com/v2/query?appid=${apiKey}&input=${query}&podstate=Result__Step-by-step+solution&format=image`
   let results;
   try {
