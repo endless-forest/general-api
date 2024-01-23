@@ -8,7 +8,7 @@ const apiKey = process.env.WOLF_MATH_API_KEY
 router.get('/', async function(req, res, next) {
   const fallbackQuery = "2 + 2" 
   const query = req.query.expression || fallbackQuery 
-  const fullUrl = `https://api.wolframalpha.com/v1/simple?appid=${apiKey}&i=${query}`
+  const fullUrl = `https://api.wolframalpha.com/v2/query?appid=${apiKey}&input=${query}&podstate=Result__Step-by-step+solution&format=image`
   let results;
   try {
     //const response = await axios.get(fullUrl)
