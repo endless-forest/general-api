@@ -20,9 +20,9 @@ router.get("/", async function (req, res, next) {
   try {
     const response = await axios.post(fullUrl, storyData, headers);
     results = response.data;
+    console.info("results:", results)
   } catch (error) {
-    console.error("Error", error);
-    results = error.error;
+    results = {"error": error }
   }
 
   res.send(results);
