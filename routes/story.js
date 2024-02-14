@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 
-const apiKey = "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"
+const apiKey = process.env.STORY_API_KEY
 
 /* get /story api. */
 router.get("/", async function (req, res, next) {
