@@ -22,7 +22,7 @@ router.get("/", async function (req, res, next) {
     results = response;
   } catch (error) {
     console.error("Error", error);
-    results = error;
+    results = error.error;
   }
 
   res.send(results);
