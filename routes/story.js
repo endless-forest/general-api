@@ -1,7 +1,8 @@
 const express = require("express");
+var cors = require('cors')
 const router = express.Router();
 
-const apiKey = process.env.STORY_API_KEY
+const apiKey =  process.env.STORY_API_KEY
 
 async function postData(url = "", data = {}) {
   const response = await fetch(url, {
@@ -20,7 +21,7 @@ async function postData(url = "", data = {}) {
 }
 
 /* get /story api. */
-router.get("/", async function (req, res, next) {
+router.get("/", cors(), async function (req, res, next) {
   const prompt = req.query.prompt;
   const fullUrl = `https://api.openai.com/v1/chat/completions`;
   const storyData = {
@@ -30,8 +31,7 @@ router.get("/", async function (req, res, next) {
   let results;
   try {
     const response = await postData(fullUrl, storyData);
-    results = { story: response.choices[0].message.content };
-    console.info("results:", results);
+    results = { story: response.choices[0].message.content }
   } catch (error) {
     console.info("error", error);
     results = { error: error };
